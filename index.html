@@ -4,10 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Color selector</title>
   </head>
   <body>
-    <input type="color" name="color" id="colorPicker" />
+    <div class="containerWrapper">
+      <div class="heading">
+        <h2>Select a color</h2>
+        <input type="color" class="colorPicker" />
+      </div>
+      <div class="colorDisplay"></div>
+      <div class="valuesDisplay">
+        <p class="HEX">HEX:</p>
+        <p class="RGB">RGB:</p>
+        <p class="HSL">HSL:</p>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
