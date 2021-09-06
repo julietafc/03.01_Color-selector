@@ -1,7 +1,9 @@
 "use strict";
 
-let webColor = "#ff45cc";
+/*  SETUP */
+window.addEventListener("load", start);
 
-let red = substring(1, 3);
-let green = substring(3, 5);
-let blue = substring(5, 7);
+let colorInput = document.querySelector(".colorPicker");
+let hexValue = document.querySelector(".HEX");
+let rgbValue = document.querySelector(".RGB");
+let hslValue = document.querySelector(".HSL");
