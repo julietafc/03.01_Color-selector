@@ -114,7 +114,11 @@ function displayColor(color) {
 
 // function display color values
 function displayValues(HEX, RGB, HSL) {
-  document.querySelector(".HEX").textContent = HEX;
-  document.querySelector(".RGB").textContent = `R:${RGB.red}, G:${RGB.green}, B:${RGB.blue}`;
-  document.querySelector(".HSL").textContent = `L:${HSL.l}, H:${HSL.h}, S:${HSL.s} `;
+  document.querySelector(".HEX").textContent = `HEX: ${HEX}`;
+  document.querySelector(".RGB").textContent = `RGB: ${RGB.red}, ${RGB.green}, ${RGB.blue}`;
+  document.querySelector(".HSL").textContent = `LHS: ${HSL.l}, ${HSL.h}%, ${HSL.s}% `;
 }
+
+// TODO:
+// DISPLAY COLOR IN COLOR BOX
+// H VALUE IS ALWAYS 0
