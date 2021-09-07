@@ -19,7 +19,7 @@ function newColorSelected() {
   let color = colorInput.value;
   hexValue = color;
   rgbValue = hexToRgb(hexValue);
-  //   hslValue = rgbToHsl(rgbValue);
+  hslValue = rgbToHsl(rgbValue);
 
   displayColor(hexValue);
   displayValues(hexValue, rgbValue, hslValue);
@@ -57,13 +57,63 @@ function rgbToHex(rgbValue) {
   return hexValue;
 }
 
+// function RGB TO HSL
+function rgbToHsl(rgbValue) {
+  let red = rgbValue.red;
+  let green = rgbValue.green;
+  let blue = rgbValue.blue;
+
+  red /= 255;
+  green /= 255;
+  blue /= 255;
+
+  let h, s, l;
+
+  const min = Math.min(red, green, blue);
+  const max = Math.max(red, green, blue);
+
+  if (max === min) {
+    h = 0;
+  } else if (max === red) {
+    h = 60 * (0 + (green - blue) / (max - min));
+  } else if (max === green) {
+    h = 60 * (2 + (blue - red) / (max - min));
+  } else if (max === blue) {
+    h = 60 * (4 + (red - green) / (max - min));
+  }
+
+  if (h < 0) {
+    h = h + 360;
+  }
+
+  l = (min + max) / 2;
+
+  if (max === 0 || min === 1) {
+    s = 0;
+  } else {
+    s = (max - l) / Math.min(l, 1 - l);
+  }
+  // multiply s and l by 100 to get the value in percent, rather than [0,1]
+  s *= 100;
+  l *= 100;
+
+  const hslValue = {
+    h: Math.round(h),
+    s: Math.round(s),
+    l: Math.round(l),
+  };
+
+  return hslValue;
+}
+
 // function display color
 function displayColor(color) {
   document.querySelector(".colorDisplay").style.backgroundColor = color;
 }
 
 // function display color values
-function displayValues(HEX, RGB) {
+function displayValues(HEX, RGB, HSL) {
   document.querySelector(".HEX").textContent = HEX;
-  document.querySelector(".RGB").textContent = `R:${rgbValue.red}, G:${rgbValue.green}, B:${rgbValue.blue}`;
+  document.querySelector(".RGB").textContent = `R:${RGB.red}, G:${RGB.green}, B:${RGB.blue}`;
+  document.querySelector(".HSL").textContent = `L:${HSL.l}, H:${HSL.h}, S:${HSL.s} `;
 }
