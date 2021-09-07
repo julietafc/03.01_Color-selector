@@ -26,3 +26,9 @@ p {
 .valuesDisplay {
   font-size: 1.2em;
 }
+
+.colorDisplay {
+  width: 270px;
+  height: 270px;
+  border-radius: 6px;
+}

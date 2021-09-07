@@ -119,6 +119,6 @@ function displayValues(HEX, RGB, HSL) {
   document.querySelector(".HSL").textContent = `LHS: ${HSL.l}, ${HSL.h}%, ${HSL.s}% `;
 }
 
-// TODO:
+// :TODO
 // DISPLAY COLOR IN COLOR BOX
 // H VALUE IS ALWAYS 0
