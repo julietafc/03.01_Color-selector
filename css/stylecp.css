@@ -75,3 +75,7 @@ p {
   position: absolute;
   right: 12em;
 }
+
+.hidden {
+  display: none;
+}
