@@ -46,8 +46,7 @@ p {
 .colorDisplay1,
 .colorDisplay2,
 .colorDisplay3,
-.colorDisplay4,
-.colorDisplay5 {
+.colorDisplay4 {
   width: 250px;
   height: 250px;
   border-radius: 50%;
@@ -59,24 +58,20 @@ p {
 
 .colorDisplay1 {
   position: absolute;
-  left: 6em;
+  left: 12em;
 }
 
 .colorDisplay2 {
   position: absolute;
-  left: 19em;
+  left: 25em;
 }
 
 .colorDisplay3 {
   position: absolute;
+  right: 26em;
 }
 
 .colorDisplay4 {
   position: absolute;
-  right: 19em;
-}
-
-.colorDisplay5 {
-  position: absolute;
-  right: 6em;
+  right: 12em;
 }
