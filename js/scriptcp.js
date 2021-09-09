@@ -1,7 +1,7 @@
 "use strict";
 
 window.addEventListener("load", start);
-let harmony = document.getElementById("select").value;
+let harmony = document.getElementById("select");
 
 // Getting a selected color from the user
 function start() {
@@ -19,7 +19,7 @@ function getBaseColor() {
   const hsl = rgbToHsl(rgb);
 
   displayBaseValue(hex, rgb, hsl);
-  //   getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
+  getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
 }
 
 function displayBaseValue(hex, rgb, hsl) {
@@ -102,7 +102,7 @@ function rgbToHsl(rgb) {
 //   green = green.toString(16);
 //   blue = blue.toString(16);
 
-//   return { red, green, blue };
+//   return "#" + red + green + blue;
 // }
 
 function displayHex(HEX) {
@@ -124,18 +124,24 @@ function displayBaseColor(color) {
   document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
 }
 
-// function getHarmony(hsl) {
-//   console.log("getHarmony");
-//   let harmony = document.getElementById("select").value;
-//   switch (harmony) {
-//     case "Analogous":
-//       getAnalogous(hsl);
-//       break;
-//     default:
-//       `Invalid`;
-//   }
-// }
+function getHarmony(hsl) {
+  console.log("getHarmony");
+  let harmony = document.getElementById("select").value;
 
-// function getAnalogous() {
-//   console.log("getAnalogous");
-// }
+  if (harmony === "analogous") {
+    getAnalogous(hsl);
+  } else {
+    console.log("invalid");
+  }
+}
+
+function getAnalogous(hsl) {
+  console.log("getAnalogous");
+  let hslObject = { h: 350, s: 45, l: 34 };
+  let arrOfColors = [];
+  for (let i = 0; i < 4; i++) {
+    console.log(i);
+    arrOfColors[i] = Object.assign({}, hslObject);
+  }
+  return hsl;
+}
