@@ -21,3 +21,30 @@ function getBaseColor() {
   displayBaseValue(hex, rgb, hsl);
   getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
 }
+
+function displayBaseValue(hex, rgb, hsl) {
+  console.log("displayBaseValue");
+  displayHex(hex);
+  displayRgb(rgb);
+  displayHsl(hsl);
+
+  displayBaseColor(hex);
+}
+
+function displayBaseColor(color) {
+  console.log("displayBaseColor");
+  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
+}
+
+function hexToRgb(hex) {
+  console.log(hex);
+  let red = parseInt(hex.substring(1, 3), 16);
+  let green = parseInt(hex.substring(3, 5), 16);
+  let blue = parseInt(hex.substring(5, 7), 16);
+
+  return {
+    red,
+    green,
+    blue,
+  };
+}
