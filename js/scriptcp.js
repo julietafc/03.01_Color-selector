@@ -48,3 +48,19 @@ function hexToRgb(hex) {
     blue,
   };
 }
+
+function getHarmony(hsl) {
+  console.log("getHarmony");
+  let harmony = document.getElementById("select").value;
+  switch (harmony) {
+    case "Analogous":
+      getAnalogous(hsl);
+      break;
+    default:
+      `Invalid`;
+  }
+}
+
+function getAnalogous() {
+  console.log("getAnalogous");
+}
