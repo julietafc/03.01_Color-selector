@@ -19,7 +19,7 @@ function getBaseColor() {
   const hsl = rgbToHsl(rgb);
 
   displayBaseValue(hex, rgb, hsl);
-  getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
+  //   getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
 }
 
 function displayBaseValue(hex, rgb, hsl) {
@@ -105,24 +105,24 @@ function rgbToHsl(rgb) {
 //   return { red, green, blue };
 // }
 
-// function displayHex(HEX) {
-//   console.log("displayHex");
-//   document.querySelector(".HEX").textContent = `HEX: ${HEX}`;
-// }
+function displayHex(HEX) {
+  console.log("displayHex");
+  document.querySelector(".HEX").textContent = `HEX: ${HEX}`;
+}
 
-// function displayRgb(RGB) {
-//   console.log("displayRgb");
-//   document.querySelector(".RGB").textContent = `RGB: ${RGB.red}, ${RGB.green}, ${RGB.blue} `;
-// }
+function displayRgb(RGB) {
+  console.log("displayRgb");
+  document.querySelector(".RGB").textContent = `RGB: ${RGB.red}, ${RGB.green}, ${RGB.blue} `;
+}
 
-// function displayHsl(HSL) {
-//   document.querySelector(".HSL").textContent = `HSL: ${HSL.h}, ${HSL.s}, ${HSL.l}`;
-// }
+function displayHsl(HSL) {
+  document.querySelector(".HSL").textContent = `HSL: ${HSL.h}, ${HSL.s}, ${HSL.l}`;
+}
 
-// function displayBaseColor(color) {
-//   console.log("displayBaseColor");
-//   document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
-// }
+function displayBaseColor(color) {
+  console.log("displayBaseColor");
+  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
+}
 
 // function getHarmony(hsl) {
 //   console.log("getHarmony");

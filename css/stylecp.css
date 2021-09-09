@@ -9,11 +9,11 @@ body {
 h2,
 p {
   font-family: "Courier New", Courier, monospace;
-  background-color: rgba(255, 255, 255, 0.26);
+  background-color: rgba(255, 255, 255, 0.507);
   margin-bottom: 1em;
 }
 
-.colorDisplay p {
+.colorBaseDisplay p {
   font-size: 1.6em;
   padding: 0.3em;
 }
