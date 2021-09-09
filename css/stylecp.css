@@ -40,6 +40,7 @@ p {
   flex-direction: row;
   margin-top: 3em;
   justify-content: center;
+  position: relative;
 }
 
 .colorDisplay1,
@@ -53,4 +54,24 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.colorDisplay1 {
+  position: absolute;
+  left: 12em;
+}
+
+.colorDisplay2 {
+  position: absolute;
+  left: 25em;
+}
+
+.colorDisplay3 {
+  position: absolute;
+  right: 26em;
+}
+
+.colorDisplay4 {
+  position: absolute;
+  right: 12em;
 }
