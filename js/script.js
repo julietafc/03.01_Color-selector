@@ -1,7 +1,5 @@
 "use strict";
 
-"use strict";
-
 window.addEventListener("load", start);
 
 // Getting a selected color from the user
