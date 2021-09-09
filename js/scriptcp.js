@@ -1,13 +1,29 @@
 "use strict";
 
 window.addEventListener("load", start);
-let harmony = document.getElementById("select");
+
+///////////////////////////* SET UP & DELEGATOR *////////////////////////////
 
 // Getting a selected color from the user
 function start() {
   let colorSelected = document.querySelector(".colorPicker");
+  let harmony = document.getElementById("select");
+  let object = randomColor();
+  let string = rgbToCSS(object);
   colorSelected.addEventListener("input", getBaseColor);
   colorSelected.addEventListener("change", getBaseColor);
+  harmony.addEventListener("input", getBaseColor);
+  harmony.addEventListener("change", getBaseColor);
+  document.querySelector(".colorBaseDisplay").style.backgroundColor = string;
+}
+
+function randomColor() {
+  document.querySelector(".valuesDisplay").classList.add("hidden");
+  let r = 0;
+  let g = 0;
+  let b = 0;
+
+  return { r, g, b };
 }
 
 // Showing a selected color (possibly a delegator for the following function calls)
@@ -23,6 +39,8 @@ function getBaseColor() {
 }
 
 function displayBaseValue(hex, rgb, hsl) {
+  document.querySelector(".valuesDisplay").classList.remove("hidden");
+
   console.log("displayBaseValue");
   displayHex(hex);
   displayRgb(rgb);
@@ -32,7 +50,6 @@ function displayBaseValue(hex, rgb, hsl) {
 }
 
 function hexToRgb(hex) {
-  console.log(hex);
   let red = parseInt(hex.substring(1, 3), 16);
   let green = parseInt(hex.substring(3, 5), 16);
   let blue = parseInt(hex.substring(5, 7), 16);
@@ -42,6 +59,17 @@ function hexToRgb(hex) {
     green,
     blue,
   };
+}
+
+///////////////////////////* CONVERTIONS *////////////////////////////
+
+// Converting RGB to CSS
+function rgbToCSS(rgb) {
+  let r = rgb.r;
+  let g = rgb.g;
+  let b = rgb.b;
+
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 // Converting RGB to HSL
@@ -105,6 +133,13 @@ function rgbToHsl(rgb) {
 //   return "#" + red + green + blue;
 // }
 
+///////////////////////////* DISPLAY VALUES *////////////////////////////
+
+function displayBaseColor(color) {
+  console.log("displayBaseColor");
+  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
+}
+
 function displayHex(HEX) {
   console.log("displayHex");
   document.querySelector(".HEX").textContent = `HEX: ${HEX}`;
@@ -119,10 +154,7 @@ function displayHsl(HSL) {
   document.querySelector(".HSL").textContent = `HSL: ${HSL.h}, ${HSL.s}, ${HSL.l}`;
 }
 
-function displayBaseColor(color) {
-  console.log("displayBaseColor");
-  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
-}
+///////////////////////////* GET HARMONY *////////////////////////////
 
 function getHarmony(hsl) {
   console.log("getHarmony");
@@ -130,6 +162,16 @@ function getHarmony(hsl) {
 
   if (harmony === "analogous") {
     getAnalogous(hsl);
+    //   } else if (harmony === "monochromatic") {
+    //     getMonochromatic(hsl);
+    //   } else if (harmony === "triad") {
+    //     getTriad(hsl);
+    //   } else if (harmony === "complementary") {
+    //     getComplementary(hsl);
+    //   } else if (harmony === "compound") {
+    //     getCompound(hsl);
+    //   } else if (harmony === "shades") {
+    //     getShades(hsl);
   } else {
     console.log("invalid");
   }
