@@ -6,6 +6,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10em;
@@ -14,12 +15,12 @@ body {
 h2,
 p {
   font-family: "Courier New", Courier, monospace;
-}
-
-p {
-  font-size: 1.6em;
   background-color: rgba(255, 255, 255, 0.26);
   margin-bottom: 1em;
+}
+
+.colorDisplay p {
+  font-size: 1.6em;
   padding: 0.3em;
 }
 
@@ -33,6 +34,26 @@ p {
 .colorDisplay {
   width: 400px;
   height: 400px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondSection {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 3em;
+  justify-content: center;
+}
+
+.colorDisplay1,
+.colorDisplay2,
+.colorDisplay3,
+.colorDisplay4 {
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background-color: rgb(104, 86, 86);
   display: flex;
