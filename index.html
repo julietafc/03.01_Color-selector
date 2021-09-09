@@ -8,18 +8,78 @@
     <title>Color selector</title>
   </head>
   <body>
-    <div class="containerWrapper">
-      <div class="heading">
-        <h2>Select a color</h2>
-        <input type="color" class="colorPicker" />
-      </div>
-      <div class="colorDisplay"></div>
-      <div class="valuesDisplay">
-        <p class="HEX">HEX:</p>
-        <p class="RGB">RGB:</p>
-        <p class="HSL">HSL:</p>
+    <div class="firstSection">
+      <div class="mainColor">
+        <div class="heading">
+          <!-- <h2>Select a color</h2> -->
+          <select class="harmony" name="select" id="select">
+            <option value="analogous">Analogous</option>
+            <option value="monochromatic">Monochromatic</option>
+            <option value="triad">Triad</option>
+            <option value="complementary">Complementary</option>
+            <option value="compound">Compound</option>
+            <option value="shades">Shades</option>
+          </select>
+          <input type="color" class="colorPicker" />
+        </div>
+        <div class="colorDisplay">
+          <div class="valuesDisplay">
+            <p class="HEX">HEX:</p>
+            <p class="RGB">RGB:</p>
+            <p class="HSL">HSL:</p>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="secondSection"></div>
+    <!-- <div class="containerWrapper">
+      <div class="container">
+        <div class="heading">
+          <h2>Select a color</h2>
+          <input type="color" class="colorPicker" />
+        </div>
+        <div class="colorDisplay">
+          <div class="valuesDisplay">
+            <p class="HEX">HEX:</p>
+            <p class="RGB">RGB:</p>
+            <p class="HSL">HSL:</p>
+          </div>
+        </div>
+      </div>
+      <div class="restOfColorsContainer">
+        <div class="restColorDisplay">
+          <div class="color1">
+            <div class="values1">
+              <p class="HEX">HEX:</p>
+              <p class="RGB">RGB:</p>
+              <p class="HSL">HSL:</p>
+            </div>
+          </div>
+          <div class="color2">
+            <div class="values2">
+              <p class="HEX">HEX:</p>
+              <p class="RGB">RGB:</p>
+              <p class="HSL">HSL:</p>
+            </div>
+          </div>
+          <div class="color3">
+            <div class="values3">
+              <p class="HEX">HEX:</p>
+              <p class="RGB">RGB:</p>
+              <p class="HSL">HSL:</p>
+            </div>
+          </div>
+          <div class="color4">
+            <div class="values4">
+              <p class="HEX">HEX:</p>
+              <p class="RGB">RGB:</p>
+              <p class="HSL">HSL:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <script src="js/script.js"></script>
   </body>
 </html>
