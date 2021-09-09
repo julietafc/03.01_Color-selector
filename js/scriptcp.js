@@ -2,14 +2,16 @@
 
 window.addEventListener("load", start);
 
+let arrOfColors = [];
+
 ///////////////////////////* SET UP & DELEGATOR *////////////////////////////
 
 // Getting a selected color from the user
 function start() {
   let colorSelected = document.querySelector(".colorPicker");
   let harmony = document.getElementById("select");
-  let object = randomColor();
-  let string = rgbToCSS(object);
+  let rgb = randomColor();
+  let string = rgbToCSS(rgb);
   colorSelected.addEventListener("input", getBaseColor);
   colorSelected.addEventListener("change", getBaseColor);
   harmony.addEventListener("input", getBaseColor);
@@ -26,29 +28,23 @@ function randomColor() {
   return { r, g, b };
 }
 
-// Showing a selected color (possibly a delegator for the following function calls)
+// Showing a selected color & delegator
 function getBaseColor() {
   const color = this.value;
   const hex = color;
   console.log(hex);
   const rgb = hexToRgb(hex);
   const hsl = rgbToHsl(rgb);
+  const css = rgbToCSS(rgb);
 
-  displayBaseValue(hex, rgb, hsl);
-  getHarmony(hsl); //  this function is called here or in rgbtohsl convertion?
+  displayValues(hex, rgb, hsl, css);
+  displayColor();
+  getHarmony();
 }
 
-function displayBaseValue(hex, rgb, hsl) {
-  document.querySelector(".valuesDisplay").classList.remove("hidden");
+///////////////////////////* CONVERTIONS *////////////////////////////
 
-  console.log("displayBaseValue");
-  displayHex(hex);
-  displayRgb(rgb);
-  displayHsl(hsl);
-
-  displayBaseColor(hex);
-}
-
+// Converting HEX to RGB
 function hexToRgb(hex) {
   let red = parseInt(hex.substring(1, 3), 16);
   let green = parseInt(hex.substring(3, 5), 16);
@@ -59,17 +55,6 @@ function hexToRgb(hex) {
     green,
     blue,
   };
-}
-
-///////////////////////////* CONVERTIONS *////////////////////////////
-
-// Converting RGB to CSS
-function rgbToCSS(rgb) {
-  let r = rgb.r;
-  let g = rgb.g;
-  let b = rgb.b;
-
-  return `rgb(${r}, ${g}, ${b})`;
 }
 
 // Converting RGB to HSL
@@ -121,23 +106,92 @@ function rgbToHsl(rgb) {
   return hsl;
 }
 
-// function rgbToHex(rgb) {
-//   let red = rgb.red;
-//   let green = rgb.green;
-//   let blue = rgb.blue;
+// Converting RGB to CSS
+function rgbToCSS(rgb) {
+  let r = rgb.r;
+  let g = rgb.g;
+  let b = rgb.b;
 
-//   red = red.toString(16);
-//   green = green.toString(16);
-//   blue = blue.toString(16);
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
-//   return "#" + red + green + blue;
-// }
+// Converting RGB to HEX
+function rgbToHex(rgb) {
+  let red = rgb.red;
+  let green = rgb.green;
+  let blue = rgb.blue;
+
+  red = red.toString(16);
+  green = green.toString(16);
+  blue = blue.toString(16);
+
+  return "#" + red + green + blue;
+}
+
+// Converting HSL to RGB
+function HSLtoRGB(hsl) {
+  let h = hsl.h;
+  let s = hsl.s;
+  let l = hsl.l;
+
+  h = h;
+  s = s / 100;
+  l = l / 100;
+
+  let c = (1 - Math.abs(2 * l - 1)) * s,
+    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+    m = l - c / 2,
+    r = 0,
+    g = 0,
+    b = 0;
+  if (0 <= h && h < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (60 <= h && h < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (120 <= h && h < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (180 <= h && h < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (240 <= h && h < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else if (300 <= h && h < 360) {
+    r = c;
+    g = 0;
+    b = x;
+  }
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+
+  return { r, g, b };
+}
 
 ///////////////////////////* DISPLAY VALUES *////////////////////////////
 
-function displayBaseColor(color) {
+function displayValues(hex, rgb, hsl) {
+  document.querySelector(".valuesDisplay").classList.remove("hidden");
+
+  console.log("displayBaseValue");
+  displayHex(hex);
+  displayRgb(rgb);
+  displayHsl(hsl);
+
+  displayColor(hex);
+}
+
+function displayColor(i) {
   console.log("displayBaseColor");
-  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
+  //   document.querySelector((`colorDisplay${i + 1}`.style.backgroundColor = arrOfColors[i]));
 }
 
 function displayHex(HEX) {
@@ -175,15 +229,18 @@ function getHarmony(hsl) {
   } else {
     console.log("invalid");
   }
+
+  displayValues();
+  displayColor();
 }
 
-function getAnalogous(hsl) {
-  console.log("getAnalogous");
-  let hslObject = { h: 350, s: 45, l: 34 };
-  let arrOfColors = [];
-  for (let i = 0; i < 4; i++) {
-    console.log(i);
+function getAnalogous(hslObject) {
+  for (let i = 1; i < 5; i++) {
     arrOfColors[i] = Object.assign({}, hslObject);
   }
-  return hsl;
+  arrOfColors[1].h = arrOfColors[1].h + 3;
+  arrOfColors[1].h = arrOfColors[1].h + 60;
+  arrOfColors[1].h = arrOfColors[1].h + 180;
+  arrOfColors[1].h = arrOfColors[1].h + 104;
+  return arrOfColors;
 }

@@ -43,10 +43,7 @@ p {
   position: relative;
 }
 
-.colorDisplay1,
-.colorDisplay2,
-.colorDisplay3,
-.colorDisplay4 {
+.displayColor {
   width: 250px;
   height: 250px;
   border-radius: 50%;
