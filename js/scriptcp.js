@@ -33,11 +33,11 @@ function getBaseColor() {
   const color = this.value;
   const hex = color;
   console.log(hex);
-  const rgb = hexToRgb(hex);
-  const hsl = rgbToHsl(rgb);
-  const css = rgbToCSS(rgb);
+  const rgbObj = hexToRgb(hex);
+  const hslObj = rgbToHsl(rgbObj);
+  const css = rgbToCSS(rgbObj);
 
-  displayValues(hex, rgb, hsl, css);
+  displayValues(hex, rgbObj, hslObj, css);
   displayColor();
   getHarmony();
 }
@@ -189,9 +189,9 @@ function displayValues(hex, rgb, hsl) {
   displayColor(hex);
 }
 
-function displayColor(i) {
+function displayColor(color) {
   console.log("displayBaseColor");
-  //   document.querySelector((`colorDisplay${i + 1}`.style.backgroundColor = arrOfColors[i]));
+  document.querySelector(".colorBaseDisplay").style.backgroundColor = color;
 }
 
 function displayHex(HEX) {
@@ -215,7 +215,7 @@ function getHarmony(hsl) {
   let harmony = document.getElementById("select").value;
 
   if (harmony === "analogous") {
-    getAnalogous(hsl);
+    getAnalogous(hslObject);
     //   } else if (harmony === "monochromatic") {
     //     getMonochromatic(hsl);
     //   } else if (harmony === "triad") {
@@ -235,12 +235,17 @@ function getHarmony(hsl) {
 }
 
 function getAnalogous(hslObject) {
+  const h = hslObject.h;
+  const s = hslObject.s;
+  const l = hslObject.l;
+
   for (let i = 1; i < 5; i++) {
     arrOfColors[i] = Object.assign({}, hslObject);
   }
-  arrOfColors[1].h = arrOfColors[1].h + 3;
+  arrOfColors[1].h = arrOfColors[1].h - 40;
   arrOfColors[1].h = arrOfColors[1].h + 60;
   arrOfColors[1].h = arrOfColors[1].h + 180;
-  arrOfColors[1].h = arrOfColors[1].h + 104;
+  arrOfColors[1].h = arrOfColors[1].h - 104;
+
   return arrOfColors;
 }
